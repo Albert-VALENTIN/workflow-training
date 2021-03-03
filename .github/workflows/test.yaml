@@ -15,14 +15,21 @@ jobs:
     - name: Say hello world
       run: echo "Welcome to the Github Actions workshop !"
 
+  # Permet de faire un nouveau job et de voir les étapes sur github
   unit-test:
     runs-on: ubuntu-20.04
     container: epitechcontent/epitest-docker
 
     steps:
     - uses: actions/checkout@v2
-    - run: mkdir -p path/to/artifact
     - name: unit-test
-      run: make tests_run > path/to/artifact/coverage_outputs
+    #Créer un artefact
+      run: make tests_run > coverage_outputs
+      # un tiret par nouvel étape.
+    - run: make coverage > coverage_outputs
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: coverage_outputs
       # run: make tests_run
     # - run: make coverage
