@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: mkdir -p path/to/artifact
-    - run: make tests_run > path/to/artifact/coverage_outputs
     - name: unit-test
+      run: make tests_run > path/to/artifact/coverage_outputs
       # run: make tests_run
     # - run: make coverage
