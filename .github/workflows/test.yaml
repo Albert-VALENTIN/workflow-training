@@ -22,5 +22,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: unit-test
-    - run: make tests_run
-    - run: make coverage
+      run: make tests_run
+    # - run: make coverage
