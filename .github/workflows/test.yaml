@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
+# hello-world correspond à un nouveau job
   hello-world:
     runs-on: ubuntu-20.04
 
@@ -33,3 +34,19 @@ jobs:
         path: coverage_outputs
       # run: make tests_run
     # - run: make coverage
+
+
+  test-and-upload:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: functional-test
+      run: make re
+    - run: ./functional-test.sh 1 + 1 > test_functional
+    - uses: actions/upload-artifact@v2
+      with:
+        name: function-tests_outputs
+        path: test_functional
+
+
